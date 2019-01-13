@@ -25,6 +25,7 @@ public class Stats {
 	public static Double[] createMyDblArray(String myStrNumbers) {
 		Double [] arraydblNbr ;
 		String[] strStatsNbrs ;
+		
 		myStrNumbers.replace(" ", "");
 		
 		strStatsNbrs = myStrNumbers.split(",");

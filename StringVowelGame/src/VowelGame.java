@@ -1,163 +1,37 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class VowelGame {
 
 	public static void main(String[] args) {
+
+		translateToPigLatin();
+
+	}
+
+	public static void translateToPigLatin() {
 		Scanner reader = new Scanner(System.in);
-		String choice = "";
+		String select = "";
+		String playAgain = "";
+		String translation = "";
 
 		do {
+			writeToPigmenu();
 
-			writeMainMenu();
-			choice = reader.next();
+			select = reader.nextLine();
+			select = (select.trim());
 
-			switch (choice) {
-			case "1":
-				translateToPigLatin(reader);
-				break;
-			case "2":
-				translateToEnglish(reader);
-				break;
-			case "3":
-				exitGame();
-				break;
-			default:
-				System.out.println("That was an invalid selection. Please try again!");
-				choice = "";
-				break;
-			}
-		} while (!choice.matches("3"));
+			translation = translatePhrase(select);
+
+			System.out.println(translation);
+			System.out.println("Do you want to translate another work or phrase?  Y/N: ");
+			playAgain = reader.nextLine();
+			playAgain = playAgain.toUpperCase();
+
+		} while (!playAgain.matches("N"));
 
 		reader.close();
 
-	}
-
-	public static void writeMainMenu() {
-
-		System.out.println("****************************************************");
-		System.out.println("*               Pig Latin Translator               *");
-		System.out.println("*            Igpay Atinlay Anslatortray            *");
-		System.out.println("****************************************************");
-		System.out.println("*                                                  *");
-		System.out.println("* Nbr    Action                                    *");
-		System.out.println("*   1    Translate from English to Pig Latin       *");
-		System.out.println("* Anslatetray omfray Englishyay otay Igpay Atinlay *");
-		System.out.println("*                                                  *");
-		System.out.println("*   2    Translate from Pig Latin to English       *");
-		System.out.println("* Anslatetray omfray Igpay Atinlay otay Englishyay *");
-		System.out.println("*                                                  *");
-		System.out.println("*   3    Exit Translator                           *");
-		System.out.println("*        Exityay Anslatortray                      *");
-		System.out.println("*                                                  *");
-		System.out.println("****************************************************");
-		System.out.println("Enter the number for the action you would like to take:");
-
-	}
-
-	public static void translateToPigLatin(Scanner reader) {
-		String select = "";
-		String playAgain = "";
-
-		System.out.println("You chose to translate from English to Pig Latin.");
-
-		do {
-
-			do {
-				writeToPigmenu();
-
-				select = reader.next();
-
-				switch (select.toUpperCase()) {
-				case "1":
-				case "ROCK":
-					player = "Rock";
-					break;
-				case "2":
-				case "PAPER":
-					player = "Paper";
-					break;
-				case "3":
-				case "SCISSORS":
-					player = "Scissors";
-					break;
-				default:
-					System.out.println("That was an invalid selection. Please try again!");
-					player = "";
-					break;
-				}
-			} while (player.matches(""));
-
-			computer = computersWeapon(rps);
-
-			System.out.println("You choose: " + player + ".");
-			System.out.println("Computers chooses: " + computer + ".");
-			winner = checkWin(player, computer);
-
-			System.out.println(winner);
-
-			System.out.println("Do you want to play again?  Y/N: ");
-			playAgain = reader.next();
-			playAgain = playAgain.toUpperCase();
-
-		} while (!playAgain.matches("N"));
-
-	}
-
-	public static void translateToEnglish(Scanner reader) {
-		String select = "";
-
-		String playAgain = "";
-
-		System.out.println("You chose to translate from Pig Latin to Englih.");
-
-		do {
-
-			do {
-				writeToEnglishmenu();
-
-				select = reader.next();
-
-				switch (select.toUpperCase()) {
-				case "1":
-				case "ROCK":
-					player = "Rock";
-					break;
-				case "2":
-				case "PAPER":
-					player = "Paper";
-					break;
-				case "3":
-				case "SCISSORS":
-					player = "Scissors";
-					break;
-				case "4":
-				case "LIZARD":
-					player = "Lizard";
-					break;
-				case "5":
-				case "SPOCK":
-					player = "Spock";
-					break;
-				default:
-					System.out.println("That was an invalid selection. Please try again!");
-					player = "";
-					break;
-				}
-			} while (player.matches(""));
-
-			computer = computersWeapon(rpsls);
-
-			System.out.println("You choose: " + player + ".");
-			System.out.println("Computers chooses: " + computer + ".");
-			winner = checkWin(player, computer);
-
-			System.out.println(winner);
-
-			System.out.println("Do you want to play again?  Y/N: ");
-			playAgain = reader.next();
-			playAgain = playAgain.toUpperCase();
-
-		} while (!playAgain.matches("N"));
 	}
 
 	public static void exitGame() {
@@ -171,33 +45,183 @@ public class VowelGame {
 		System.out.println("*            Igpay Atinlay Anslatortray            *");
 		System.out.println("****************************************************");
 		System.out.println("*                                                  *");
+		System.out.println("* Enter the word or phrase you want translated     *");
+		System.out.println("* to Pig Latin.                                    *");
+		System.out.println("*                                                  *");
 		System.out.println("* Enterya ethay igpay atinlay ordwa orya asephray  *");
 		System.out.println("* ouyay antway anslatedtray otay Englishay.        *");
-		System.out.println("*                                                  *");
-		System.out.println("* Enter the pig latin word or phrase you want      *");
-		System.out.println("* translated to English.                           *");
 		System.out.println("*                                                  *");
 		System.out.println("****************************************************");
 		System.out.println("Translate Anslatetray:");
 
 	}
 
-	public static void writeToEnglishmenu() {
+	public static Boolean isVowel(char myChar) {
+		String vowels = "AEIOUaeiou";
+		Boolean bVowel = false;
 
-		System.out.println("****************************************************");
-		System.out.println("*               Pig Latin Translator               *");
-		System.out.println("*            Igpay Atinlay Anslatortray            *");
-		System.out.println("****************************************************");
-		System.out.println("*                                                  *");
-		System.out.println("* Enter the pig latin word or phrase you want      *");
-		System.out.println("* translated to English.                           *");
-		System.out.println("*                                                  *");
-		System.out.println("* Enterya ethay igpay atinlay ordwa orya asephray  *");
-		System.out.println("* ouyay antway anslatedtray otay Englishay.        *");
-		System.out.println("*                                                  *");
-		System.out.println("****************************************************");
-		System.out.println("Anslatetray Translate:");
+		if (vowels.indexOf(myChar) > 0) {
+			bVowel = true;
+		}
+
+		return bVowel;
 
 	}
 
+	public static Boolean isY(char myChar) {
+		String checkY = "Yy";
+		Boolean bIsY = false;
+
+		if (checkY.indexOf(myChar) > 0) {
+			bIsY = true;
+		}
+
+		return bIsY;
+
+	}
+
+	public static Boolean isSpace(char myChar) {
+
+		Boolean isSpace = false;
+
+		if (myChar == ' ')  {
+			isSpace = true;
+		}
+
+		return isSpace;
+
+	}
+
+	public static String translateWord(String word) {
+		String strTranslation = "";
+		String temp = "";
+		String temp2 = "";
+
+		Boolean firstLetter = true;
+		Boolean beginVowel = false;
+		boolean foundVowel = false;
+		
+
+
+		for (int i = 0; i < word.length(); i++) {
+
+			// while (!isSpace(select.charAt(i))) {
+
+			if (firstLetter) {
+
+				firstLetter = false;
+
+				if (isVowel(word.charAt(i))) {
+					// goto end of string
+					beginVowel = true;
+					foundVowel = true;
+					temp = temp + word.charAt(i);
+
+				} else {
+
+					temp2 = temp2 + word.charAt(i);
+
+				}
+
+			} else {
+				if (foundVowel) {
+					temp = temp + word.charAt(i);
+
+				} else {
+					if (isVowel(word.charAt(i)) || isY(word.charAt(i))) {
+						foundVowel = true;
+						temp = temp + word.charAt(i);
+					} else {
+						temp2 = temp2 + word.charAt(i);
+					}
+				}
+			}
+
+			// } ;
+
+		}
+
+		if (beginVowel) {
+			strTranslation = temp + vowenEnding();
+		} else {
+			strTranslation = temp + temp2 + "ay";
+
+		}
+		strTranslation = strTranslation.toLowerCase();
+
+		return strTranslation;
+	}
+
+	public static String vowenEnding() {
+		String ending = "";
+		int randNum = -1;
+		Random randNumGenerator = new Random();
+
+		randNum = randNumGenerator.nextInt(100) % 3;
+
+		switch (randNum) {
+		case 0:
+			ending = "ay";
+			break;
+		case 1:
+			ending = "way";
+			break;
+		case 2:
+			ending = "yay";
+			break;
+
+		default:
+			System.out.println("oops");
+			ending = "";
+			break;
+		}
+
+		return ending;
+
+	}
+
+	public static String translatePhrase(String phrase) {
+		String strTranslation = "";
+		String word = "";
+		String temp = "";
+		Boolean firstWord = true;
+		int intBeginNextWord = 0;
+		int i = 0; 
+		
+
+
+		
+		if (phrase.indexOf(" ") == 0){
+
+			strTranslation = translateWord(phrase);
+		}
+		else {
+
+		for ( i = 0; i < phrase.length(); i++) {
+			
+
+			// while (!isSpace(select.charAt(i))) {
+
+
+				if (isSpace(phrase.charAt(i))) {
+					// goto end of string
+					
+					word = phrase.substring (intBeginNextWord, i);
+					intBeginNextWord = i + 1;
+					strTranslation = strTranslation + translateWord(word) + " ";
+					word = "";
+
+				}
+			}
+		
+			word = phrase.substring (intBeginNextWord, phrase.length()  );
+			strTranslation = strTranslation + translateWord(word) + " ";
+			
+				
+		
+			}
+		
+		
+		return strTranslation; 
+	}
 }
