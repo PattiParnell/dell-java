@@ -94,7 +94,7 @@ public class VowelGame {
 
 		Boolean firstLetter = true;
 		Boolean beginVowel = false;
-		boolean foundVowel = false;
+		Boolean foundVowel = false;
 
 		for (int i = 0; i < word.length(); i++) {
 
@@ -127,7 +127,6 @@ public class VowelGame {
 					}
 				}
 			}
-
 
 		}
 
@@ -178,8 +177,8 @@ public class VowelGame {
 
 		if (phrase.indexOf(" ") == 0) {
 			strTranslation = translateWord(phrase);
-		} 
-		
+		}
+
 		else {
 
 			for (i = 0; i < phrase.length(); i++) {
