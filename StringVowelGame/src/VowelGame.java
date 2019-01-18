@@ -34,10 +34,6 @@ public class VowelGame {
 
 	}
 
-	public static void exitGame() {
-		System.out.println("Thanks for Pig Latin Translator!!!");
-	}
-
 	public static void writeToPigmenu() {
 
 		System.out.println("****************************************************");
@@ -81,10 +77,9 @@ public class VowelGame {
 	}
 
 	public static Boolean isSpace(char myChar) {
-
 		Boolean isSpace = false;
 
-		if (myChar == ' ')  {
+		if (myChar == ' ') {
 			isSpace = true;
 		}
 
@@ -100,12 +95,8 @@ public class VowelGame {
 		Boolean firstLetter = true;
 		Boolean beginVowel = false;
 		boolean foundVowel = false;
-		
-
 
 		for (int i = 0; i < word.length(); i++) {
-
-			// while (!isSpace(select.charAt(i))) {
 
 			if (firstLetter) {
 
@@ -137,7 +128,6 @@ public class VowelGame {
 				}
 			}
 
-			// } ;
 
 		}
 
@@ -183,45 +173,31 @@ public class VowelGame {
 	public static String translatePhrase(String phrase) {
 		String strTranslation = "";
 		String word = "";
-		String temp = "";
-		Boolean firstWord = true;
 		int intBeginNextWord = 0;
-		int i = 0; 
-		
+		int i = 0;
 
-
-		
-		if (phrase.indexOf(" ") == 0){
-
+		if (phrase.indexOf(" ") == 0) {
 			strTranslation = translateWord(phrase);
-		}
+		} 
+		
 		else {
 
-		for ( i = 0; i < phrase.length(); i++) {
-			
-
-			// while (!isSpace(select.charAt(i))) {
-
+			for (i = 0; i < phrase.length(); i++) {
 
 				if (isSpace(phrase.charAt(i))) {
 					// goto end of string
-					
-					word = phrase.substring (intBeginNextWord, i);
+
+					word = phrase.substring(intBeginNextWord, i);
 					intBeginNextWord = i + 1;
 					strTranslation = strTranslation + translateWord(word) + " ";
 					word = "";
-
 				}
 			}
-		
-			word = phrase.substring (intBeginNextWord, phrase.length()  );
+
+			word = phrase.substring(intBeginNextWord, phrase.length());
 			strTranslation = strTranslation + translateWord(word) + " ";
-			
-				
-		
-			}
-		
-		
-		return strTranslation; 
+		}
+
+		return strTranslation;
 	}
 }
