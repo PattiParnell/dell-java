@@ -49,118 +49,85 @@ public class RockPaperScissors {
 	}
 
 	public static void playRPS(Scanner reader) {
-		String select = "";
 		String computer = "";
 		String player = "";
-		String winner = "";
 		String playAgain = "";
 
 		System.out.println("You chose to play Rock Paper Scissors");
 
 		do {
 			System.out.println("playRPS");
-			do {
-				writeRPSmenu();
+			player = "";
+			playAgain = "";
+			writeRPSmenu();
 
-				select = reader.nextLine();
-				select = select.trim();
+			while (player.matches("")) {
+				try {
+					player = getRPS_Play(reader.nextLine());
 
-				switch (select.toUpperCase()) {
-				case "1":
-				case "ROCK":
-					player = "Rock";
-					break;
-				case "2":
-				case "PAPER":
-					player = "Paper";
-					break;
-				case "3":
-				case "SCISSORS":
-					player = "Scissors";
-					break;
-				default:
-					System.out.println("That was an invalid selection. Please try again!");
+				} catch (Exception e) {
+					System.out.println("That was an invalid selection. Please enter 1, 2 or 3!");
 					player = "";
-					break;
 				}
-			} while (player.matches(""));
+			}
 
 			computer = computersWeapon(rps);
 
-			System.out.println("You choose: " + player + ".");
-			System.out.println("Computers chooses: " + computer + ".");
-			winner = checkWin(player, computer);
+			printWinner(player, computer);
 
-			System.out.println(winner);
-
-			System.out.println("Do you want to play again?  Y/N: ");
-			playAgain = reader.nextLine();
-			playAgain = playAgain.trim();
-			playAgain = playAgain.toUpperCase();
+			while (playAgain.matches("")) {
+				try {
+					playAgain = getPlayAgain(reader);
+				} catch (Exception e) {
+					System.out.println("That was an invalid entry. Type 'Y' for Yes or 'N' for No.");
+					playAgain = "";
+				}
+			}
 
 		} while (!playAgain.matches("N"));
 
 	}
 
 	public static void playRPSLS(Scanner reader) {
-		String select = "";
+
 		String computer = "";
 		String player = "";
-		String winner = "";
 		String playAgain = "";
 
 		System.out.println("You chose to play Rock Paper Scissors Lizard Spock");
 
 		do {
 			System.out.println("playRPSLS");
-			do {
-				writeRPSLSmenu();
+			player = "";
+			playAgain = "";
+			writeRPSLSmenu();
 
-				select = reader.nextLine();
-				select = select.trim();
+			while (player.matches("")) {
 
-				switch (select.toUpperCase()) {
-				case "1":
-				case "ROCK":
-					player = "Rock";
-					break;
-				case "2":
-				case "PAPER":
-					player = "Paper";
-					break;
-				case "3":
-				case "SCISSORS":
-					player = "Scissors";
-					break;
-				case "4":
-				case "LIZARD":
-					player = "Lizard";
-					break;
-				case "5":
-				case "SPOCK":
-					player = "Spock";
-					break;
-				default:
+				try {
+
+					player = getRPSLS_Play(reader.nextLine());
+				} catch (Exception e) {
 					System.out.println("That was an invalid selection. Please try again!");
 					player = "";
-					break;
 				}
-			} while (player.matches(""));
+
+			}
 
 			computer = computersWeapon(rpsls);
 
-			System.out.println("You choose: " + player + ".");
-			System.out.println("Computers chooses: " + computer + ".");
-			winner = checkWin(player, computer);
+			printWinner(player, computer);
+		
+			while (playAgain.matches("")) {
+				try {
+					playAgain = getPlayAgain(reader);
+				} catch (Exception e) {
+					System.out.println("That was an invalid entry. Type 'Y' for Yes or 'N' for No.");
+					playAgain = "";
+				}
+			}
 
-			System.out.println(winner);
-
-			System.out.println("Do you want to play again?  Y/N: ");
-			playAgain = reader.nextLine();
-			playAgain = playAgain.trim();
-			playAgain = playAgain.toUpperCase();
-
-		} while (!playAgain.matches("N") );
+		} while (!playAgain.matches("N"));
 	}
 
 	public static void exitGame() {
@@ -234,7 +201,7 @@ public class RockPaperScissors {
 	public static void writeRPSLSmenu() {
 
 		System.out.println("**************************************************");
-		System.out.println("*              Rock Paper Scissors               *");
+		System.out.println("*         Rock Paper Scissors Lizard Spock       *");
 		System.out.println("**************************************************");
 		System.out.println("*                                                *");
 		System.out.println("* Nbr    Action                                  *");
@@ -407,17 +374,28 @@ public class RockPaperScissors {
 
 	@SuppressWarnings("finally")
 	public static Boolean SelectGame() {
-		Integer gameChoice = 0;
+		int gameChoice = 0;
 		Boolean playNewGame = false;
 		Scanner reader = new Scanner(System.in);
-	
 
 		try {
 
 			do {
+				gameChoice = 0;
 
 				writeMainMenu();
-				gameChoice = Integer.parseInt(reader.nextLine());
+
+				while (gameChoice == 0) {
+					try {
+						gameChoice = getGameChoice(reader.nextLine());
+					} catch (NumberFormatException e) {
+						System.out.println("That was an invalid entry. Please enter 1, 2 or 3.");
+					} catch (Exception e) {
+						System.out.println("Please enter the numbers 1, 2 or 3.");
+
+					}
+
+				}
 
 				switch (gameChoice) {
 				case 1:
@@ -433,28 +411,140 @@ public class RockPaperScissors {
 					playNewGame = false;
 					break;
 				default:
-					System.out.println("That was an invalid selection. Please try again!");
-					playNewGame = true;
-					gameChoice = 0;
-					break;
+					throw new java.lang.RuntimeException("That was an invalid selection. Please enter 1, 2 or 3!");
 				}
+
 			} while (gameChoice != 3);
-			
 
 		}
 
-		catch (NumberFormatException e) {
-
-			System.out.println("That was an invalid selection. Please enter 1, 2 or 3 ");
+		catch (Exception e) {
 			playNewGame = true;
+			System.out.println(e.getMessage());
 
-		} finally {
+		}
+
+		finally {
 
 			reader.close();
 			return playNewGame;
 
 		}
 
+	}
+
+	public static String getRPS_Play(String myPlay) {
+		String play = "";
+		myPlay = myPlay.trim();
+
+		switch (myPlay.toUpperCase()) {
+		case "1":
+		case "ROCK":
+			play = "Rock";
+			break;
+		case "2":
+		case "PAPER":
+			play = "Paper";
+			break;
+		case "3":
+		case "SCISSORS":
+			play = "Scissors";
+			break;
+		default:
+			throw new java.lang.RuntimeException("That was an invalid selection. Please try again!");
+
+		}
+
+		return play;
+
+	}
+
+	public static String getRPSLS_Play(String myPlay) {
+		String play = "";
+
+		myPlay = myPlay.trim();
+
+		switch (myPlay.toUpperCase()) {
+		case "1":
+		case "ROCK":
+			play = "Rock";
+			break;
+		case "2":
+		case "PAPER":
+			play = "Paper";
+			break;
+		case "3":
+		case "SCISSORS":
+			play = "Scissors";
+			break;
+		case "4":
+		case "LIZARD":
+			play = "Lizard";
+			break;
+		case "5":
+		case "SPOCK":
+			play = "Spock";
+			break;
+		default:
+			throw new IllegalArgumentException();
+
+		}
+
+		return play;
+	}
+
+	public static String getPlayAgain(Scanner myReader) {
+		String playAgain = "";
+
+		System.out.println("Do you want to play again?  Y/N: ");
+		playAgain = myReader.nextLine();
+		playAgain = playAgain.trim();
+
+		switch (playAgain.toUpperCase()) {
+		case "Y":
+		case "YES":
+			playAgain = "Y";
+			break;
+		case "N":
+		case "NO":
+			playAgain = "N";
+			break;
+		default:
+			throw new IllegalArgumentException();
+		}
+
+		return playAgain;
+
+	}
+
+	public static void printWinner(String myPlayer, String myComputer) {
+
+		System.out.println("You chose: " + myPlayer + ".");
+		System.out.println("Computer chose: " + myComputer + ".");
+		System.out.println(checkWin(myPlayer, myComputer));
+
+	}
+
+	public static int getGameChoice(String myChoice) {
+		int choice = 0;
+		myChoice = myChoice.trim();
+
+		switch (Integer.parseInt(myChoice)) {
+		case 1:
+			choice = 1;
+			break;
+		case 2:
+			choice = 2;
+			break;
+		case 3:
+			choice = 3;
+			break;
+		default:
+			throw new IllegalArgumentException();
+
+		}
+
+		return choice;
 	}
 
 }
