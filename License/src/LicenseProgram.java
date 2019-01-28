@@ -9,7 +9,7 @@ public class LicenseProgram {
 		DriversLicense dlDad = new DriversLicense();
 		DriversLicense dlMe = new DriversLicense();
 		
-		//for each the 3object the attribute is set
+		//for each the 3 objects the attribute are set
 		dlMom.firstName = "Janice";
 		dlMom.lastName = "Parnell";
 		dlMom.gender = Gender.FEMALE;  //uses fancy dancy enum
@@ -26,7 +26,7 @@ public class LicenseProgram {
 		dlMe.lastName = "Parnell";
 		dlMe.gender = Gender.FEMALE;
 		dlMe.heightInInches = 65;
-		dlMe.DOB = "03/28/1988";
+		dlMe.DOB = "03/28/1968";
 		
 		//prints out each drivers license along with calculated age. 
 		System.out.println("Name: " + dlMom.getFullName() + " Age: " + dlMom.getAge() );

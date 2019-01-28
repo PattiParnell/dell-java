@@ -10,8 +10,6 @@ public class ParkingGarage {
 	public ParkingGarage(int myCapacity) {
 		this.setCapacity(myCapacity);
 
-		for (int i = 0; i < this.getCapacity(); i++)
-			spot[i] = i;
 	}
 
 	public Car[] getArrCar() {
@@ -28,6 +26,10 @@ public class ParkingGarage {
 
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
+
+		for (int i = 0; i < this.getCapacity(); i++) {
+			spot[i] = i;
+		}
 	}
 
 	public void park(Car myCar, int mySpot) {
@@ -37,26 +39,25 @@ public class ParkingGarage {
 	public void vacate(int mySpot) {
 		mapParkingSpots.remove(spot[mySpot]);
 	}
-	
-	public void printInventory () {
+
+	public void printInventory() {
 		Car myCar = new Car();
-		for (int i = 0 ; i < spot.length; i++) {
-			if (mapParkingSpots.containsKey(this.spot[i])){
+		for (int i = 0; i < spot.length; i++) {
+			if (mapParkingSpots.containsKey(this.spot[i])) {
 				myCar = mapParkingSpots.get(this.spot[i]);
 				System.out.println("Spot: " + this.spot[i]);
 				System.out.println("Color: " + myCar.getColor());
 				System.out.println("Color: " + myCar.getMake());
 				System.out.println("Color: " + myCar.getModel());
 				System.out.println("Color: " + myCar.getLicenseNbr());
-			}
-			else {
+			} else {
 				System.out.println("Spot: " + this.spot[i]);
 				System.out.println("Vacant");
 
 			}
-				
+
 		}
-		
+
 	}
 
 }
