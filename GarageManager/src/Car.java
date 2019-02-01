@@ -1,20 +1,27 @@
 public class Car {
+	
+	//private variables for class Car
 	private String color;
 	private String licenseNbr;
 	private String make;
 	private String model;
-	
+
 	public Car () {
-	   this("Unknown", "Unknown", "Unknown", "Unknown" );	
+		//basic constructor for class Car.  Calls other constructor to set initial values.
+		this("Unknown", "Unknown", "Unknown", "Unknown" );	
 	}
-		
+
 	public Car (String myColor, String myLicenseNbr, String myMake, String myModel) {
+		//constructor for Class car
+		
 		this.setColor(myColor);
 		this.setLicenseNbr(myLicenseNbr);
 		this.setMake(myMake);
 		this.setModel(myModel);
-		
+
 	}
+	
+	//	getters and setters 
 	public String getColor() {
 		return color;
 	}
@@ -39,7 +46,5 @@ public class Car {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	
-	
 
 }
