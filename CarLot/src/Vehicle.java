@@ -49,6 +49,6 @@ public abstract class Vehicle {
 		System.out.println("Make:            " + this.getMake());
 		System.out.println("Model:           " + this.getModel());
 		System.out.println("License Number:  " + this.getLicenseNbr());
-		System.out.println("Price:           $" + this.getPrice());
+		System.out.println("Price:           " + String.format ( "$ %(,.2f", this.getPrice()));
 	}
 }

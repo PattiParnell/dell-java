@@ -29,7 +29,9 @@ public class RentableProgram {
 		rentalList[8] = tool3;
 		
 		for (int i = 0; i < rentalList.length; i++) {
-			System.out.println("Description: " + rentalList[i].getDescription() +  "   Daily Rate: "  +rentalList[i].getDailyRate());
+			System.out.println("Description: " + rentalList[i].getDescription() 
+					            +  "   Daily Rate: "  
+					             +  String.format ( "$ %(,.2f", rentalList[i].getDailyRate()));
 		}
 			
 		
