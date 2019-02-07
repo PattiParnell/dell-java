@@ -3,48 +3,55 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CarLot {
-	
+	//declare variables for carlot name and list of vehicles
 	private String carLotName;
-	private Map< String, Vehicle> mapVehicleList = new HashMap<String, Vehicle>();
+	private ArrayList <Vehicle> alVehicleList = new ArrayList<Vehicle>(); //using an array list 
 	
+	//constructor for car lot
+	public CarLot(String carLotName) {
+		this.carLotName = carLotName;
+	}
+	
+	//getters and setters for carlot
+	public ArrayList<Vehicle> getAlVehicleList() {
+		return alVehicleList;
+	}
+	public void setAlVehicleList(Vehicle myVehicle) {
+		//this setting is just taking in 1 vehicle and 
+		//adding it to the array list
+		this.alVehicleList.add(myVehicle);
+	}
 	public String getCarLotName() {
 		return carLotName;
 	}
 	public void setCarLotName(String carLotName) {
 		this.carLotName = carLotName;
 	}
-	public Map<String, Vehicle> getMapVehicleList() {
-		return mapVehicleList;
-	}
-	public void setMapVehicleList(String myLicenseNumber, Vehicle myVehicle) {
-		this.mapVehicleList.put(myLicenseNumber, myVehicle);
-		
-		
-	}
+
 	
-	public void printInventory ()
-	{
-		String license; 
-
+	public void printInventory () {
+	//prints our car lots inventory
 		
-		System.out.println("Car Lot Name:    " + this.getCarLotName());
+		System.out.println("**********Car Lot Name:    " + this.getCarLotName() + " Inventory List **********");
 		
-		
-		ArrayList<String> vehicleList = new ArrayList<String>(mapVehicleList.keySet());
-		// gets the key list for the map of vehicles
-
-		for (int i = 0; i < vehicleList.size(); i++) {
+		for (int i = 0; i < alVehicleList.size(); i++) {
 			// loop for each vehicle in array
-			license = vehicleList.get(i); // gets key for map
-			if (mapVehicleList.get(license) instanceof Truck) {
-			    ((Truck)mapVehicleList.get(license)).printVehicleDescription();
+		
+			if (alVehicleList.get(i) instanceof Truck ) {
+				//prints Truck attributes for trucks
+				((Truck)alVehicleList.get(i)).printVehicleDescription();
 			}
 			else {
-				((Car)mapVehicleList.get(license)).printVehicleDescription();
-			}
-						
+				//prints Car attributes for cars.
+				((Car)alVehicleList.get(i)).printVehicleDescription();
+			}				
 
 		}
+		
+		System.out.println("**********End  " + this.getCarLotName() + " Inventory List **********");
+		System.out.println("");
+		System.out.println("");
+
 		
 	
 	}
