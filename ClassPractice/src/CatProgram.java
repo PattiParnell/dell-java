@@ -1,33 +1,27 @@
+import java.io.*;
 
-public class CatProgram {
+public class CopyFile {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-Cat mycat = new Cat();
+   public static void main(String args[]) throws IOException {
+      FileReader in = null;
+      FileWriter out = null;
 
-Book myBook = new Book();
-//
-//mycat.ageInMonth = 18;
-//mycat.breed = "Domestic Short Hair";
-//mycat.color = "Black";
-//mycat.isPurring = false;
-//mycat.isSleeping = true;
-//mycat.eyeColor = "Orange";
-//
-//System.out.println (mycat.breed);
+      try {
+         in = new FileReader("input.txt");
+         out = new FileWriter("output.txt");
 
-myBook.setAuthorFirstName( " JK "); 
-myBook.setAuthorLastName("Rowlings") ;
-myBook.setTitle("Harry Potter and the Sorceror's Stone");
-
-Book newBook = new Book ("Mary", "Balough", "Someone to Trust");
-
-System.out.println("Title: " + myBook.getTitle() + " Author: " + myBook.getAuthorFullName());
-System.out.println("Title: " + newBook.getTitle() + " Author: " + newBook.getAuthorFullName());
-
-
-	}
-	
-
-
+         int c; // Each char is read in as an int code
+         while ((c = in.read()) != -1) {
+            out.write(c);
+         }
+      } finally {
+         // Close input and output streams
+         if (in != null) {
+            in.close();
+         }
+         if (out != null) {
+            out.close();
+         }
+      }
+   }
 }
