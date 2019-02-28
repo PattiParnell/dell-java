@@ -1,0 +1,4 @@
+
+public enum ITEM_STATUS {
+ COMPLETE, PENDING, ALL
+}
