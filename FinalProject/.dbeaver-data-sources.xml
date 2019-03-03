@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="sqlite_jdbc-16941f36e3c-6949cd6e77c1159e" provider="generic" driver="sqlite_jdbc" name="SQLite - sample.db" save-password="true" read-only="false">
+		<connection server="" database="C:\Users\Patricia_parnell\dell-java\FinalProject\sample.db" url="jdbc:sqlite:C:\Users\Patricia_parnell\dell-java\FinalProject\sample.db" type="dev"/>
+	</data-source>
+	<data-source id="sqlite_jdbc-16941f6877b-29500c87d129cb5d" provider="generic" driver="sqlite_jdbc" name="SQLite - sample.db 2" save-password="true" read-only="false">
+		<connection server="" database="C:\Users\Patricia_parnell\dell-java\FinalProject\sample.db" url="jdbc:sqlite:C:\Users\Patricia_parnell\dell-java\FinalProject\sample.db" type="dev"/>
+	</data-source>
+	<data-source id="sqlite_jdbc-16941f96f33-7ecd0e409feadb84" provider="generic" driver="sqlite_jdbc" name="SQLite - sample.db" save-password="true" read-only="false">
+		<connection server="" database="C:\Users\Patricia_parnell\dell-java\FinalProject\sample.db" url="jdbc:sqlite:C:\Users\Patricia_parnell\dell-java\FinalProject\sample.db" type="dev"/>
+	</data-source>
+	<data-source id="sqlite_jdbc-1694239577f-3c51ef5adf96056b" provider="generic" driver="sqlite_jdbc" name="SQLite - sample.db 3" save-password="true" read-only="false">
+		<connection server="" database="C:\Users\Patricia_parnell\dell-java\FinalProject\sample.db" url="jdbc:sqlite:C:\Users\Patricia_parnell\dell-java\FinalProject\sample.db" type="dev"/>
+	</data-source>
+	<filters/>
+</data-sources>

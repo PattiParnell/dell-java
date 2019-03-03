@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+//holds class for DAO so all classes 
 
 public interface DAO {
 	public Integer add(String item) ;

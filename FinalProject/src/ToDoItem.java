@@ -3,14 +3,15 @@ public class ToDoItem {
 	private Integer id ;
 	private String itemDescription ;
 	private Boolean isComplete;
-	private static int NEXTID = 100;
+	
+
 	
 	
-	public ToDoItem ( String myDescription) {
-		setId (NEXTID);
+	public ToDoItem ( String myDescription, Integer myID) {
+		setId (myID);
 		setItemDescription(myDescription);
 		setIsComplete (false);
-		NEXTID++;
+	
 	}
 
 

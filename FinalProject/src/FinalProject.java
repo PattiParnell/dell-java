@@ -1,11 +1,14 @@
 
 public class FinalProject {
+	
+	//holds main program for the final project
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// creates and instantiates controller
 		Controller myProgram = new Controller();
 		
 		myProgram.Start();
+		//calls the start routine
 		
 	}
 
