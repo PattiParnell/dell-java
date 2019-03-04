@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-//holds class for DAO so all classes 
+//super class for DAO so all classes have common methods
 
 public interface DAO {
 	public Integer add(String item) ;

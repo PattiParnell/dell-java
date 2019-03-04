@@ -85,7 +85,7 @@ public class InMemoryDAO implements DAO {
 		//or list of todo by status active, completed or all
 		
 		ArrayList<ToDoItem> listToDo = new ArrayList<ToDoItem>();
-		//array to hold the list of todo to be printed. 
+		// array to hold the list of todo to be printed.
 
 		for (int i = 0; i < toDoList.size(); i++) {
 			//loops through todo array
