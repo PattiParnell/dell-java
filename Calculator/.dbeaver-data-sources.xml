@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="sqlite_jdbc-1693b5fdfbb-3766dd9cb174c7fc" provider="generic" driver="sqlite_jdbc" name="SQLite - spring-app.db" save-password="true" read-only="false">
+		<connection server="" database="C:\Users\Patricia_parnell\spring-app\spring-app.db" url="jdbc:sqlite:C:\Users\Patricia_parnell\spring-app\spring-app.db" type="dev"/>
+	</data-source>
+	<data-source id="sqlite_jdbc-16941e945d3-641db2cc7b145c87" provider="generic" driver="sqlite_jdbc" name="SQLite - sample.db" save-password="true" read-only="false">
+		<connection server="" database="C:\Users\Patricia_parnell\dell-java\FinalProject\sample.db" url="jdbc:sqlite:C:\Users\Patricia_parnell\dell-java\FinalProject\sample.db" type="dev"/>
+	</data-source>
+	<data-source id="sqlite_jdbc-16941ea0426-5a29db5f1db216f7" provider="generic" driver="sqlite_jdbc" name="SQLite - sample.db 2" save-password="true" read-only="false">
+		<connection server="" database="C:\Users\Patricia_parnell\dell-java\FinalProject\sample.db" url="jdbc:sqlite:C:\Users\Patricia_parnell\dell-java\FinalProject\sample.db" type="dev"/>
+	</data-source>
+	<filters/>
+</data-sources>
